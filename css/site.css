@@ -1,0 +1,166 @@
+/*total width and height of elements are included*/
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+label,
+select,
+input {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 4vw;
+    color: #76689a;
+}
+
+h2 {
+    font-size: 3vw;
+    color: #76689a;
+}
+
+.page-header {
+    display: grid;
+    grid-template-areas: 'title hero'
+        'booking hero';
+    grid-template-columns: 50vw;
+    grid-template-rows: 30vh 70vh;
+    width: 100%;
+}
+
+.title {
+    grid-area: title;
+}
+
+.logo {
+    max-height: 100%;
+    max-width: 40%;
+    display: inline-block;
+}
+
+.page-title {
+    display: inline-block;
+    line-height: 150%;
+    vertical-align: top;
+    margin-top: 5vh;
+    max-width: 60%;
+}
+
+.hero-container {
+    grid-area: hero;
+    margin: auto;
+}
+
+.hero-image {
+    width: 100%;
+}
+
+.booking-form {
+    grid-area: booking;
+    padding: 5%;
+display:flex;
+flex-wrap:wrap;
+margin: auto 5%;
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+.form-elements {
+    flex:45%;
+    margin: 10px;}
+
+.booking-items {
+    border: 2px solid #76689a;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    color: #76689a;
+}
+
+input,
+label,
+select,
+.submit-button {
+    font-size: 1.25em;
+    width: 100%;
+    font-weight: bold;
+}
+
+/* Styling for Submit button - colour, rounded corners, size */
+.submit-button {
+    background-color: #76689a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Positions custom icon for checkin and checkout */
+#checkin::-webkit-calendar-picker-indicator,
+#checkout::-webkit-calendar-picker-indicator {
+    background-repeat: no-repeat;
+}
+
+/* Sets checkin icon */
+#checkin::-webkit-calendar-picker-indicator {
+    background-image: url("../images/checkin.png");
+}
+
+/* Sets checkout icon */
+#checkout::-webkit-calendar-picker-indicator {
+    background-image: url('../images/checkout.png');
+}
+
+/* Media Queries for Tablet */
+@media only screen and (max-width: 1024px) {
+    .page-header {
+        grid-template-areas: 'title title' 'booking hero';
+        grid-template-columns: 55vw 45vw;
+        grid-template-rows: 30vh;
+    }
+
+    .hero-image {
+        max-height: 60vh;
+    }
+
+    .booking-form {
+        margin: 20px;
+    }
+
+}
+
+/* Media Queries for Mobile */
+@media only screen and (max-width: 530px) {
+    h1 {
+        font-size:24px;
+    }
+
+    h2 {
+        font-size:20px;
+    }
+    
+    .page-header {
+        grid-template-areas: 'title' 'hero' 'booking';
+        grid-template-columns: 90vw;
+        grid-template-rows: auto;
+    }
+
+    .logo {
+        width: 40%;
+    }
+
+    .form-elements {
+        flex:100%;
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-swidth, initial-scale=1.0">
+    <title>Lilac Valley Farm Stay</title>
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+
+<body>
+    <header class="page-header">
+        <div class="title">
+            <img class="logo" src="images/logo.png" alt="Lilac Valley Logo" />
+            <div class="page-title">
+                <h1>LILAC VALLEY</h1>
+                <h2 style="color:black;">FARM STAY</h2>
+            </div>
+        </div>
+            <form class="booking-form">
+                <div class="form-elements">
+                    <label for="checkin">Check In</label>
+                    <input class="booking-items" type="date" id="checkin" name="checkin">
+                </div>
+                <div class="form-elements">
+                    <label for="checkout">Check Out</label>
+                    <input class="booking-items" type="date" id="checkout" name="checkout">
+                </div>
+
+                <div class="form-elements">
+                    <label for="adults">Adults</label>
+                    <select class="booking-items" id="adults" name="adults">
+                        <option value="1">1 adult</option>
+                        <option value="2">2 adults</option>
+                        <option value="3">3 adults</option>
+                        <option value="4">4 adults</option>
+                    </select>
+                </div>
+
+                <div class="form-elements">
+                    <label for="children">Children</label>
+                    <select class="booking-items" id="children" name="children">
+                        <option value="0">0 children</option>
+                        <option value="1">1 child</option>
+                        <option value="2">2 children</option>
+                        <option value="3">3 children</option>
+                        <option value="4">4 children</option>
+                    </select>
+                </div>
+
+                <button class="submit-button" type="submit">Check Availability</button>
+            </form>
+
+        <div class="hero-container">
+            <img class="hero-image" src="images/hero.png" alt="Image of Barnstay" />
+        </div>
+    </header>
+</body>
+
+</html>
