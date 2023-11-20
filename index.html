@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- 
+    Images are sourced from the following: 
+    Open Gardens Victoria. n.d. Parnham Farm. https://opengardensvictoria.org.au/Parnham-Farm
+    Unsplash. n.d. R Architecture. https://unsplash.com/@rarchitecture_melbourne 
+    Unsplash. n.d. Unsplash. https://unsplash.com/
+-->
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-swidth, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lilac Valley Farm Stay</title>
     <link rel="stylesheet" href="css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,44 +26,235 @@
                 <h2 style="color:black;">FARM STAY</h2>
             </div>
         </div>
-            <form class="booking-form">
-                <div class="form-elements">
-                    <label for="checkin">Check In</label>
-                    <input class="booking-items" type="date" id="checkin" name="checkin">
-                </div>
-                <div class="form-elements">
-                    <label for="checkout">Check Out</label>
-                    <input class="booking-items" type="date" id="checkout" name="checkout">
-                </div>
+        <form class="booking-form">
+            <div class="form-elements">
+                <label for="checkin">Check In</label>
+                <input class="booking-items" type="date" id="checkin" name="checkin">
+            </div>
+            <div class="form-elements">
+                <label for="checkout">Check Out</label>
+                <input class="booking-items" type="date" id="checkout" name="checkout">
+            </div>
 
-                <div class="form-elements">
-                    <label for="adults">Adults</label>
-                    <select class="booking-items" id="adults" name="adults">
-                        <option value="1">1 adult</option>
-                        <option value="2">2 adults</option>
-                        <option value="3">3 adults</option>
-                        <option value="4">4 adults</option>
-                    </select>
-                </div>
+            <div class="form-elements">
+                <label for="adults">Adults</label>
+                <select class="booking-items" id="adults" name="adults">
+                    <option value="1">1 adult</option>
+                    <option value="2">2 adults</option>
+                    <option value="3">3 adults</option>
+                    <option value="4">4 adults</option>
+                </select>
+            </div>
 
-                <div class="form-elements">
-                    <label for="children">Children</label>
-                    <select class="booking-items" id="children" name="children">
-                        <option value="0">0 children</option>
-                        <option value="1">1 child</option>
-                        <option value="2">2 children</option>
-                        <option value="3">3 children</option>
-                        <option value="4">4 children</option>
-                    </select>
-                </div>
+            <div class="form-elements">
+                <label for="children">Children</label>
+                <select class="booking-items" id="children" name="children">
+                    <option value="0">0 children</option>
+                    <option value="1">1 child</option>
+                    <option value="2">2 children</option>
+                    <option value="3">3 children</option>
+                    <option value="4">4 children</option>
+                </select>
+            </div>
 
-                <button class="submit-button" type="submit">Check Availability</button>
-            </form>
+            <button class="submit-button" type="submit">Check Availability</button>
+        </form>
 
         <div class="hero-container">
             <img class="hero-image" src="images/hero.png" alt="Image of Barnstay" />
         </div>
+
     </header>
+
+    <div class="navbar fixed">
+        <a href="#header"><img alt="Lilac Valley Logo" class="nav-image" src="images/logo.png" /></a>
+        <div id="menu-toggle" class="hamburger">☰</div>
+        <div id="menu-items" class="nav-items">
+            <a href="#about" class="nav-item">About</a>
+            <a href="#gallery" class="nav-item">Gallery</a>
+            <a href="#bookings" class="nav-item">Bookings</a>
+            <a href="#contact" class="nav-item">Contact</a>
+        </div>
+    </div>
+
+    <div class="about" id="about">
+        <div class="about-title">
+            <h2 class="title-cont">About Us</h2>
+        </div>
+        <div class="about-text">
+            <p>Tucked in the serene Blue Mountains, Lilac Valley Farm Stay, owned by Marina Ye, offers rustic elegance
+                and a peaceful retreat. Set on four scenic acres, our beautifully restored barn house provides a
+                tranquil escape. Enjoy our plunge pool and explore the charming cottage garden. At Lilac Valley, we
+                offer a minimalistic haven where natural beauty meets serenity.</p>
+        </div>
+        <img class="about-image" alt="orange chair with decor" src="images/about.png" />
+    </div>
+    <div class="gallery">
+        <h2 class="title-cont" id="gallery-title">Gallery</h2>
+        <div class="gallery-container" id="galleryContainer">
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery1.png" alt="Outdoor Gazebo in House Garden">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery2.png" alt="Lounge with Fireplace in Modern Home">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery3.png"
+                    alt="Exterior of House with Bush covered in Purple Flowers">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery4.png" alt="Modern Black and White Kitchen">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery5.png" alt="Bath in Black and White Bathroom">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery6.png"
+                    alt="Exterior of House with Purple flowers and bushes">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery7.png" alt="Ducks and Ducklings Walking on Grass">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery8.png" alt="Two chickens sitting in grass">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery9.png" alt="Lamb in a paddock">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery10.png" alt="Modern white desk space">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery11.png" alt="Barn style barn stools">
+            </div>
+            <div class="image-container">
+                <img class="gallery-image" src="images/gallery12.png" alt="Five organic eggs on tea towel">
+            </div>
+        </div>
+        <div class="pagination">
+            <button id="prevPage" onclick="changePage(-1)"> &lt; </button>
+            <button id="nextPage" onclick="changePage(1)"> &gt; </button>
+        </div>
+    </div>
+    <script>
+        var currentPage = 1;
+        var imagesPerPage = 6;
+        var imagesPerPageMobile = 1;
+
+        function showImages() {
+            var totalImages = document.querySelectorAll('.image-container').length;
+            var totalPages = Math.ceil(totalImages / (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage));
+
+            var startIndex = (currentPage - 1) * (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage);
+            var endIndex = startIndex + (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage);
+
+            var allImages = document.querySelectorAll('.image-container');
+            allImages.forEach(function (image, index) {
+                if (index >= startIndex && index < endIndex) {
+                    image.style.display = 'block';
+                } else {
+                    image.style.display = 'none';
+                }
+            });
+
+            updateButtonPositions(totalPages);
+        }
+
+        function changePage(direction) {
+            currentPage += direction;
+            showImages();
+        }
+
+        function updateButtonPositions(totalPages) {
+            var pagination = document.querySelector('.pagination');
+            var prevButton = document.getElementById('prevPage');
+            var nextButton = document.getElementById('nextPage');
+
+            if (currentPage === 1) {
+                pagination.style.justifyContent = 'flex-end';
+                prevButton.style.display = 'none';
+                nextButton.style.display = 'block';
+                nextButton.style.order = 2;
+            } else if (currentPage < totalPages) {
+                pagination.style.justifyContent = 'space-between';
+                prevButton.style.display = 'block';
+                nextButton.style.display = 'block';
+                prevButton.style.order = 1;
+                nextButton.style.order = 2;
+            } else {
+                pagination.style.justifyContent = 'flex-start';
+                prevButton.style.display = 'block';
+                nextButton.style.display = 'none';
+                prevButton.style.order = 1;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbar = document.querySelector(".navbar");
+            var headerSection = document.querySelector(".page-header");
+
+            function addFixed() {
+                navbar.classList.add("fixed");
+            }
+
+            function removeFixed() {
+                navbar.classList.remove("fixed");
+            }
+
+            function handleScroll() {
+                var headerHeight = headerSection.offsetHeight;
+                var navbarHeight = navbar.offsetHeight;
+                var scrollpos = window.scrollY;
+
+                if (scrollpos > headerHeight - navbarHeight) {
+                    addFixed();
+                } else {
+                    removeFixed();
+                }
+            }
+
+            function handleNavClick(event) {
+                event.preventDefault();
+
+                var targetId = event.target.getAttribute("href").substring(1);
+                var targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    var offset = targetElement.offsetTop - navbar.offsetHeight;
+
+                    if (window.innerWidth <= 530) {
+                        offset -= navbar.offsetHeight;
+                    }
+
+                    window.scrollTo({
+                        top: offset,
+                        behavior: "smooth"
+                    });
+                }
+            }
+
+            handleScroll();
+
+            window.addEventListener('scroll', handleScroll);
+
+            document.getElementById("menu-toggle").addEventListener("click", function () {
+                document.getElementById("menu-items").classList.toggle("show");
+            });
+
+            // Initial setup
+            showImages();
+
+            // Recalculate total pages when the window is resized
+            window.addEventListener('resize', function () {
+                var totalPages = Math.ceil(
+                    document.querySelectorAll('.image-container').length /
+                    (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage)
+                );
+                updateButtonPositions(totalPages);
+            });
+        });
+
+    </script>
 </body>
 
 </html>

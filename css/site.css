@@ -3,16 +3,24 @@
     box-sizing: border-box;
 }
 
+/* Prevents the page from jumping on scroll and creates a smooth transition */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Setting the brand font for all text on the page */
 h1,
 h2,
 h3,
 h4,
 label,
 select,
-input {
+input,
+p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Customising h1 and h2 size and colour*/
 h1 {
     font-size: 4vw;
     color: #76689a;
@@ -20,7 +28,7 @@ h1 {
 
 h2 {
     font-size: 3vw;
-    color: #76689a;
+    color: #dd7d30;
 }
 
 .page-header {
@@ -62,16 +70,17 @@ h2 {
 .booking-form {
     grid-area: booking;
     padding: 5%;
-display:flex;
-flex-wrap:wrap;
-margin: auto 5%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto 5%;
     border-radius: 20px;
     background-color: lightgray;
 }
 
 .form-elements {
-    flex:45%;
-    margin: 10px;}
+    flex: 45%;
+    margin: 10px;
+}
 
 .booking-items {
     border: 2px solid #76689a;
@@ -96,7 +105,7 @@ select,
 
 /* Styling for Submit button - colour, rounded corners, size */
 .submit-button {
-    background-color: #76689a;
+    background-color: #dd7d30;
     color: white;
     border: none;
     border-radius: 10px;
@@ -122,6 +131,160 @@ select,
     background-image: url('../images/checkout.png');
 }
 
+/* Navbar Styling */
+.navbar {
+    position: relative;
+    height: 90px;
+    width: 100%;
+    background-color: white;
+    z-index:1;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+}
+
+.nav-item {
+    float: left;
+    text-align: center;
+    padding: 3.5vh 1.95vw;
+    text-decoration: none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3vh;
+}
+
+.hamburger {
+    display: none;
+}
+
+.nav-item:hover,
+.nav-item:active {
+    color: black;
+}
+
+.nav-image {
+    max-height: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+
+/* About Section Styling */
+.about {
+    margin-top: 0;
+    background-image: url("../images/aboutback.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position-x: center;
+    background-position-y: center;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 40vw 60vw;
+    grid-template-rows: 40vh 60vh;
+    grid-template-areas: 'abouttitle abouttext' 'aboutimage abouttext';
+}
+
+.about-title {
+    grid-area: abouttitle;
+    align-self: flex-end;
+    justify-self: center;
+}
+
+.title-cont {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: fit-content;
+}
+
+.about-image {
+    max-height: 100%;
+    max-width: 90%;
+    grid-area: aboutimage;
+    justify-self: flex-end;
+}
+
+.about-text {
+    grid-area: abouttext;
+    width: 60%;
+    padding: 3%;
+    font-size: 2vw;
+    align-self: center;
+    margin-top: 15vh;
+    justify-self: left;
+    margin-left: 5vw;
+}
+
+/* Gallery Styling */
+.gallery {
+    background-color: #e8e8e8;
+    height:fit-content;
+    margin:auto;
+    padding:5vh 10vw;
+    margin-top:5vh;
+}
+
+.gallery-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    z-index: -1;
+}
+
+#gallery-title {
+    background-color: white;
+    color:#dd7d30;
+    border: 3px solid #dd7d30;
+    margin-bottom:-8vh;
+    position: relative;
+}
+
+.image-container {
+    flex: calc(31% - 20px);
+    margin-bottom: 20px;
+    height: auto;
+}
+
+.gallery-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    padding: 10px 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px; 
+}
+
+#prevPage,
+#nextPage {
+    background-color: #dd7d30;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 2em; 
+    cursor: pointer;
+}
+
+#prevPage {
+    order: 1; 
+    display:none;
+}
+
+#nextPage {
+    order: 2;
+}
+
+
 /* Media Queries for Tablet */
 @media only screen and (max-width: 1024px) {
     .page-header {
@@ -137,19 +300,28 @@ select,
     .booking-form {
         margin: 20px;
     }
-
 }
 
 /* Media Queries for Mobile */
 @media only screen and (max-width: 530px) {
     h1 {
-        font-size:24px;
+        font-size: 24px;
     }
 
     h2 {
-        font-size:20px;
+        font-size: 20px;
     }
-    
+
+    label,
+select,
+input, h3, h4 {
+    font-size: 16px;
+}
+
+    p {
+        font-size: 13px;
+    }
+
     .page-header {
         grid-template-areas: 'title' 'hero' 'booking';
         grid-template-columns: 90vw;
@@ -161,6 +333,80 @@ select,
     }
 
     .form-elements {
-        flex:100%;
+        flex: 100%;
+    }
+
+    .navbar {
+        height: 10vh;
+        width: 100%;
+        padding-right: 25px;
+    }
+
+    /* Show Hamburger Menu on Smaller Screens and Hide Nav Items */
+    .hamburger {
+        float: right;
+        text-align: center;
+        padding: 2.5vh 2vw;
+        text-decoration: none;
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 5vh;
+        display: block;
+    }
+
+    .nav-items {
+        display: none;
+    }
+
+    /* Format Menu Items So They Display as a Drop-Down */
+    .nav-items.show {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 10vh;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        border: 1px solid #ddd;
+    }
+
+    .about {
+        background-image: url("../images/aboutback2.png");
+        grid-template-columns: 25vw;
+        grid-template-rows: 20vh 30vh 50vh;
+        width: 100%;
+        height:90vh;
+        bottom:0;
+    }
+
+    .about-title {
+        grid-column: 1 /span 3;
+        grid-row: 1;
+    }
+
+    .about-text {
+        grid-row: 2;
+        grid-column: 2 / span 3;
+        width: 90%;
+        margin-top: 0;
+        margin-left: 0;
+        background-color: white;
+        padding:5px 15px;
+        border-radius: 20px;
+    }
+
+    .about-image {
+        grid-column: 1 / span 3;
+        grid-row: 3;
+    }
+
+    .image-container {
+        flex: 100%; 
+        margin-bottom: 20px;
+        height: auto;
+    }
+
+    .gallery-container {
+        justify-content: center; 
     }
 }
