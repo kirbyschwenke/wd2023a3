@@ -137,123 +137,149 @@
         </div>
     </div>
     <script>
-        var currentPage = 1;
-        var imagesPerPage = 6;
-        var imagesPerPageMobile = 1;
+document.addEventListener('DOMContentLoaded', function () {
+    var navbar = document.querySelector(".navbar");
+    var headerSection = document.querySelector(".page-header");
 
-        function showImages() {
-            var totalImages = document.querySelectorAll('.image-container').length;
-            var totalPages = Math.ceil(totalImages / (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage));
+    function addFixed() {
+        navbar.classList.add("fixed");
+    }
 
-            var startIndex = (currentPage - 1) * (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage);
-            var endIndex = startIndex + (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage);
+    function removeFixed() {
+        navbar.classList.remove("fixed");
+    }
 
-            var allImages = document.querySelectorAll('.image-container');
-            allImages.forEach(function (image, index) {
-                if (index >= startIndex && index < endIndex) {
-                    image.style.display = 'block';
-                } else {
-                    image.style.display = 'none';
-                }
-            });
+    function handleScroll() {
+        var headerHeight = headerSection.offsetHeight;
+        var navbarHeight = navbar.offsetHeight;
+        var scrollpos = window.scrollY;
 
-            updateButtonPositions(totalPages);
+        if (scrollpos > headerHeight - navbarHeight) {
+            addFixed();
+        } else {
+            removeFixed();
         }
+    }
 
-        function changePage(direction) {
-            currentPage += direction;
-            showImages();
-        }
+    function handleNavClick(event) {
+        event.preventDefault();
 
-        function updateButtonPositions(totalPages) {
-            var pagination = document.querySelector('.pagination');
-            var prevButton = document.getElementById('prevPage');
-            var nextButton = document.getElementById('nextPage');
+        var targetId = event.target.getAttribute("href").substring(1);
+        var targetElement = document.getElementById(targetId);
 
-            if (currentPage === 1) {
-                pagination.style.justifyContent = 'flex-end';
-                prevButton.style.display = 'none';
-                nextButton.style.display = 'block';
-                nextButton.style.order = 2;
-            } else if (currentPage < totalPages) {
-                pagination.style.justifyContent = 'space-between';
-                prevButton.style.display = 'block';
-                nextButton.style.display = 'block';
-                prevButton.style.order = 1;
-                nextButton.style.order = 2;
-            } else {
-                pagination.style.justifyContent = 'flex-start';
-                prevButton.style.display = 'block';
-                nextButton.style.display = 'none';
-                prevButton.style.order = 1;
-            }
-        }
+        if (targetElement) {
+            var offset = targetElement.offsetTop - navbar.offsetHeight;
 
-        document.addEventListener('DOMContentLoaded', function () {
-            var navbar = document.querySelector(".navbar");
-            var headerSection = document.querySelector(".page-header");
-
-            function addFixed() {
-                navbar.classList.add("fixed");
+            if (window.innerWidth <= 530) {
+                offset -= navbar.offsetHeight;
             }
 
-            function removeFixed() {
-                navbar.classList.remove("fixed");
-            }
-
-            function handleScroll() {
-                var headerHeight = headerSection.offsetHeight;
-                var navbarHeight = navbar.offsetHeight;
-                var scrollpos = window.scrollY;
-
-                if (scrollpos > headerHeight - navbarHeight) {
-                    addFixed();
-                } else {
-                    removeFixed();
-                }
-            }
-
-            function handleNavClick(event) {
-                event.preventDefault();
-
-                var targetId = event.target.getAttribute("href").substring(1);
-                var targetElement = document.getElementById(targetId);
-
-                if (targetElement) {
-                    var offset = targetElement.offsetTop - navbar.offsetHeight;
-
-                    if (window.innerWidth <= 530) {
-                        offset -= navbar.offsetHeight;
-                    }
-
-                    window.scrollTo({
-                        top: offset,
-                        behavior: "smooth"
-                    });
-                }
-            }
-
-            handleScroll();
-
-            window.addEventListener('scroll', handleScroll);
-
-            document.getElementById("menu-toggle").addEventListener("click", function () {
-                document.getElementById("menu-items").classList.toggle("show");
+            window.scrollTo({
+                top: offset,
+                behavior: "smooth"
             });
+        }
+    }
 
-            // Initial setup
-            showImages();
+    handleScroll();
 
-            // Recalculate total pages when the window is resized
-            window.addEventListener('resize', function () {
-                var totalPages = Math.ceil(
-                    document.querySelectorAll('.image-container').length /
-                    (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPage)
-                );
-                updateButtonPositions(totalPages);
-            });
+    window.addEventListener('scroll', handleScroll);
+
+    document.getElementById("menu-toggle").addEventListener("click", function () {
+        document.getElementById("menu-items").classList.toggle("show");
+    });
+
+    var currentPage = 1;
+    var totalImages = document.querySelectorAll('.image-container').length;
+
+    // Set the number of images per page for mobile and larger screens
+    var imagesPerPageMobile = 1;
+    var imagesPerPageLargeScreen = 6;
+
+    function calculateTotalPages() {
+        return Math.ceil(totalImages / (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPageLargeScreen));
+    }
+
+    function showImages() {
+        var itemsPerPage = window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPageLargeScreen;
+
+        // Reset the display property for all images
+        var allImages = document.querySelectorAll('.image-container');
+        allImages.forEach(function (image) {
+            image.style.display = 'none';
         });
 
+        // Display only the images in the current page range
+        for (var i = (currentPage - 1) * itemsPerPage; i < currentPage * itemsPerPage; i++) {
+            if (allImages[i]) {
+                allImages[i].style.display = 'block';
+            }
+        }
+
+        updateButtonPositions();
+    }
+
+    function changePage(direction) {
+        // Calculate total pages dynamically
+        var totalPages = calculateTotalPages();
+
+        // Ensure the current page is within bounds
+        currentPage += direction;
+
+        if (currentPage < 1) {
+            currentPage = totalPages;
+        } else if (currentPage > totalPages) {
+            currentPage = 1;
+        }
+
+        // Show or hide images based on the current page
+        showImages();
+    }
+
+    function updateButtonPositions() {
+        var pagination = document.querySelector('.pagination');
+        var prevButton = document.getElementById('prevPage');
+        var nextButton = document.getElementById('nextPage');
+
+        var totalPages = calculateTotalPages();
+
+        if (currentPage === 1) {
+            pagination.style.justifyContent = 'flex-end';
+            prevButton.style.display = 'none';
+            nextButton.style.display = 'block';
+            nextButton.style.order = 2;
+        } else if (currentPage < totalPages) {
+            pagination.style.justifyContent = 'space-between';
+            prevButton.style.display = 'block';
+            nextButton.style.display = 'block';
+            prevButton.style.order = 1;
+            nextButton.style.order = 2;
+        } else {
+            pagination.style.justifyContent = 'flex-start';
+            prevButton.style.display = 'block';
+            nextButton.style.display = 'none';
+            prevButton.style.order = 1;
+        }
+    }
+
+    // Initial setup
+    showImages();
+
+    // Recalculate total pages when the window is resized
+    window.addEventListener('resize', function () {
+        totalPages = calculateTotalPages();
+        showImages();
+    });
+
+    // Event listeners for pagination buttons
+    document.getElementById('prevPage').addEventListener('click', function () {
+        changePage(-1);
+    });
+
+    document.getElementById('nextPage').addEventListener('click', function () {
+        changePage(1);
+    });
+});
     </script>
 </body>
 
