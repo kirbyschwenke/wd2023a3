@@ -72,7 +72,7 @@
         <div id="menu-items" class="nav-items">
             <a href="#about" class="nav-item">About</a>
             <a href="#gallery" class="nav-item">Gallery</a>
-            <a href="#bookings" class="nav-item">Bookings</a>
+            <a href="#activities" class="nav-item">Activities</a>
             <a href="#contact" class="nav-item">Contact</a>
         </div>
     </div>
@@ -89,7 +89,7 @@
         </div>
         <img class="about-image" alt="orange chair with decor" src="images/about.png" />
     </div>
-    <div class="gallery">
+    <div class="gallery" id="gallery">
         <h2 class="title-cont" id="gallery-title">Gallery</h2>
         <div class="gallery-container" id="galleryContainer">
             <div class="image-container">
@@ -136,150 +136,179 @@
             <button id="nextPage" onclick="changePage(1)"> &gt; </button>
         </div>
     </div>
+    <div class="activities-section" id="activities">
+        <h2 class="title-cont" id="activities-title">Activities</h2>
+        <div class="activities-container">
+            <div class="activity-card">
+                <img class="activity-img" src="images/pool.png" alt="Pool on varandah with sunset in background">
+                <div class="activity-text">
+                    <h3>Swimming</h3>
+                    <p>Take a fresh dip in our outdoor plunge pool!</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <img class="activity-img" src="images/garden.png" alt="Flowers in a Backyard Garden">
+                <div class="activity-text">
+                    <h3>Garden Walk</h3>
+                    <p>Stroll through our lovely cottage gardens.</p>
+                </div>
+            </div>
+            <div class="activity-card">
+                <img class="activity-img" src="images/chickens.png" alt="Child Feeding Chickens">
+                <div class="activity-text">
+                    <h3>Feed the Chickens</h3>
+                    <p>Gather some feed and score some eggs!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-section" id="contact">
+        
+    </div>
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var navbar = document.querySelector(".navbar");
-    var headerSection = document.querySelector(".page-header");
+        document.addEventListener('DOMContentLoaded', function () {
+            var navbar = document.querySelector(".navbar");
+            var headerSection = document.querySelector(".page-header");
 
-    function addFixed() {
-        navbar.classList.add("fixed");
-    }
-
-    function removeFixed() {
-        navbar.classList.remove("fixed");
-    }
-
-    function handleScroll() {
-        var headerHeight = headerSection.offsetHeight;
-        var navbarHeight = navbar.offsetHeight;
-        var scrollpos = window.scrollY;
-
-        if (scrollpos > headerHeight - navbarHeight) {
-            addFixed();
-        } else {
-            removeFixed();
-        }
-    }
-
-    function handleNavClick(event) {
-        event.preventDefault();
-
-        var targetId = event.target.getAttribute("href").substring(1);
-        var targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            var offset = targetElement.offsetTop - navbar.offsetHeight;
-
-            if (window.innerWidth <= 530) {
-                offset -= navbar.offsetHeight;
+            function addFixed() {
+                navbar.classList.add("fixed");
             }
 
-            window.scrollTo({
-                top: offset,
-                behavior: "smooth"
+            function removeFixed() {
+                navbar.classList.remove("fixed");
+            }
+
+            function handleScroll() {
+                var headerHeight = headerSection.offsetHeight;
+                var navbarHeight = navbar.offsetHeight;
+                var scrollpos = window.scrollY;
+
+                if (scrollpos > headerHeight - navbarHeight) {
+                    addFixed();
+                } else {
+                    removeFixed();
+                }
+            }
+
+            function handleNavClick(event) {
+                event.preventDefault();
+
+                var targetId = event.target.getAttribute("href").substring(1);
+                var targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    var offset = targetElement.offsetTop - navbar.offsetHeight;
+
+                    if (window.innerWidth <= 530) {
+                        offset -= navbar.offsetHeight;
+                    }
+
+                    window.scrollTo({
+                        top: offset,
+                        behavior: "smooth"
+                    });
+                }
+            }
+
+            handleScroll();
+
+            window.addEventListener('scroll', handleScroll);
+
+            document.getElementById("menu-toggle").addEventListener("click", function () {
+                document.getElementById("menu-items").classList.toggle("show");
             });
-        }
-    }
 
-    handleScroll();
+            var currentPage = 1;
+            var totalImages = document.querySelectorAll('.image-container').length;
 
-    window.addEventListener('scroll', handleScroll);
+            // Set the number of images per page for mobile and larger screens
+            var imagesPerPageMobile = 1;
+            var imagesPerPageLargeScreen = 6;
 
-    document.getElementById("menu-toggle").addEventListener("click", function () {
-        document.getElementById("menu-items").classList.toggle("show");
-    });
-
-    var currentPage = 1;
-    var totalImages = document.querySelectorAll('.image-container').length;
-
-    // Set the number of images per page for mobile and larger screens
-    var imagesPerPageMobile = 1;
-    var imagesPerPageLargeScreen = 6;
-
-    function calculateTotalPages() {
-        return Math.ceil(totalImages / (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPageLargeScreen));
-    }
-
-    function showImages() {
-        var itemsPerPage = window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPageLargeScreen;
-
-        // Reset the display property for all images
-        var allImages = document.querySelectorAll('.image-container');
-        allImages.forEach(function (image) {
-            image.style.display = 'none';
-        });
-
-        // Display only the images in the current page range
-        for (var i = (currentPage - 1) * itemsPerPage; i < currentPage * itemsPerPage; i++) {
-            if (allImages[i]) {
-                allImages[i].style.display = 'block';
+            function calculateTotalPages() {
+                return Math.ceil(totalImages / (window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPageLargeScreen));
             }
-        }
 
-        updateButtonPositions();
-    }
+            function showImages() {
+                var itemsPerPage = window.innerWidth <= 530 ? imagesPerPageMobile : imagesPerPageLargeScreen;
 
-    function changePage(direction) {
-        // Calculate total pages dynamically
-        var totalPages = calculateTotalPages();
+                // Reset the display property for all images
+                var allImages = document.querySelectorAll('.image-container');
+                allImages.forEach(function (image) {
+                    image.style.display = 'none';
+                });
 
-        // Ensure the current page is within bounds
-        currentPage += direction;
+                // Display only the images in the current page range
+                for (var i = (currentPage - 1) * itemsPerPage; i < currentPage * itemsPerPage; i++) {
+                    if (allImages[i]) {
+                        allImages[i].style.display = 'block';
+                    }
+                }
 
-        if (currentPage < 1) {
-            currentPage = totalPages;
-        } else if (currentPage > totalPages) {
-            currentPage = 1;
-        }
+                updateButtonPositions();
+            }
 
-        // Show or hide images based on the current page
-        showImages();
-    }
+            function changePage(direction) {
+                // Calculate total pages dynamically
+                var totalPages = calculateTotalPages();
 
-    function updateButtonPositions() {
-        var pagination = document.querySelector('.pagination');
-        var prevButton = document.getElementById('prevPage');
-        var nextButton = document.getElementById('nextPage');
+                // Ensure the current page is within bounds
+                currentPage += direction;
 
-        var totalPages = calculateTotalPages();
+                if (currentPage < 1) {
+                    currentPage = totalPages;
+                } else if (currentPage > totalPages) {
+                    currentPage = 1;
+                }
 
-        if (currentPage === 1) {
-            pagination.style.justifyContent = 'flex-end';
-            prevButton.style.display = 'none';
-            nextButton.style.display = 'block';
-            nextButton.style.order = 2;
-        } else if (currentPage < totalPages) {
-            pagination.style.justifyContent = 'space-between';
-            prevButton.style.display = 'block';
-            nextButton.style.display = 'block';
-            prevButton.style.order = 1;
-            nextButton.style.order = 2;
-        } else {
-            pagination.style.justifyContent = 'flex-start';
-            prevButton.style.display = 'block';
-            nextButton.style.display = 'none';
-            prevButton.style.order = 1;
-        }
-    }
+                // Show or hide images based on the current page
+                showImages();
+            }
 
-    // Initial setup
-    showImages();
+            function updateButtonPositions() {
+                var pagination = document.querySelector('.pagination');
+                var prevButton = document.getElementById('prevPage');
+                var nextButton = document.getElementById('nextPage');
 
-    // Recalculate total pages when the window is resized
-    window.addEventListener('resize', function () {
-        totalPages = calculateTotalPages();
-        showImages();
-    });
+                var totalPages = calculateTotalPages();
 
-    // Event listeners for pagination buttons
-    document.getElementById('prevPage').addEventListener('click', function () {
-        changePage(-1);
-    });
+                if (currentPage === 1) {
+                    pagination.style.justifyContent = 'flex-end';
+                    prevButton.style.display = 'none';
+                    nextButton.style.display = 'block';
+                    nextButton.style.order = 2;
+                } else if (currentPage < totalPages) {
+                    pagination.style.justifyContent = 'space-between';
+                    prevButton.style.display = 'block';
+                    nextButton.style.display = 'block';
+                    prevButton.style.order = 1;
+                    nextButton.style.order = 2;
+                } else {
+                    pagination.style.justifyContent = 'flex-start';
+                    prevButton.style.display = 'block';
+                    nextButton.style.display = 'none';
+                    prevButton.style.order = 1;
+                }
+            }
 
-    document.getElementById('nextPage').addEventListener('click', function () {
-        changePage(1);
-    });
-});
+            // Initial setup
+            showImages();
+
+            // Recalculate total pages when the window is resized
+            window.addEventListener('resize', function () {
+                totalPages = calculateTotalPages();
+                showImages();
+            });
+
+            // Event listeners for pagination buttons
+            document.getElementById('prevPage').addEventListener('click', function () {
+                changePage(-1);
+            });
+
+            document.getElementById('nextPage').addEventListener('click', function () {
+                changePage(1);
+            });
+        });
     </script>
 </body>
 
