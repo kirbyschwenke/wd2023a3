@@ -20,7 +20,7 @@ p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Customising h1 and h2 size and colour*/
+/* Customising h1, h2, h3 size and colour*/
 h1 {
     font-size: 4vw;
     color: #76689a;
@@ -35,36 +35,37 @@ h3 {
     color: #76689a;
 }
 
+/* . indicates reference to class in html code, this particular one specifies page-header class */
 .page-header {
-    display: grid;
+    display: grid; /* Sets up grid layout for section */
     grid-template-areas: 'title hero'
-        'booking hero';
-    grid-template-columns: 50vw;
-    grid-template-rows: 30vh 70vh;
+        'booking hero'; /* References each section of page by custom grid-area and specifies positioning in rows and columns */
+    grid-template-columns: 50vw; /* Specifies size of column in responsive format */
+    grid-template-rows: 30vh 70vh; /* Specifies varying row sizes */
     width: 100%;
 }
 
 .title {
-    grid-area: title;
+    grid-area: title; /* Grid area name for reference in grid-template-areas */
 }
 
 .logo {
     max-height: 100%;
     max-width: 40%;
-    display: inline-block;
+    display: inline-block; /* Allows the logo to display next to another section in a line */
 }
 
 .page-title {
     display: inline-block;
-    line-height: 150%;
-    vertical-align: top;
-    margin-top: 5vh;
+    line-height: 150%; /* Specifies the height and spacing between text based on font size */
+    vertical-align: top; /* Positions the element to the top of parent */
+    margin-top: 5vh; /* Space above element in responsive format */
     max-width: 60%;
 }
 
 .hero-container {
     grid-area: hero;
-    margin: auto;
+    margin: auto; /* Centers element in parent */
 }
 
 .hero-image {
@@ -74,15 +75,16 @@ h3 {
 .booking-form {
     grid-area: booking;
     padding: 5%;
-    display: flex;
-    flex-wrap: wrap;
+    display: flex; /* Sets flex layout for section */
+    flex-wrap: wrap; /* Any elements that dont fit on line move to next line */
     margin: auto 5%;
-    border-radius: 20px;
+    border-radius: 20px; /* Rounded corners */
     background-color: lightgray;
 }
 
+/* Sets styling for each form element div */
 .form-elements {
-    flex: 45%;
+    flex: 45%; /* Sets percentage width of flex parent */
     margin: 10px;
 }
 
@@ -98,11 +100,12 @@ label {
     color: #76689a;
 }
 
+/* Styling for form text */
 input,
 label,
 select,
 .submit-button {
-    font-size: 1.25em;
+    font-size: 1.25em; /* Responsive font size */
     width: 100%;
 }
 
@@ -115,7 +118,7 @@ select,
     padding: 15px;
     width: 80%;
     margin: 20px auto;
-    display: block;
+    display: block; /* Takes up whole line */
 }
 
 /* Positions custom icon for checkin and checkout */
@@ -140,9 +143,10 @@ select,
     height: 90px;
     width: 100%;
     background-color: white;
-    z-index: 1;
+    z-index: 1; /* Positions element layer above others */
 }
 
+/* Styling for navbar once it becomes sticky to top */
 .fixed {
     position: fixed;
     top: 0;
@@ -151,20 +155,22 @@ select,
 .nav-item {
     float: left;
     text-align: center;
-    padding: 3.5vh 1.95vw;
+    padding: 3.5vh 1.95vw; /* Sets spacing around each link */
     text-decoration: none;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 3vh;
 }
 
+/* Initial display in larger screen = no hamburger */
 .hamburger {
     display: none;
 }
 
+/* Styling for when a user hovers over element or it has been clicked */
 .nav-item:hover,
 .nav-item:active {
-    color: black;
+    color: #76689a;
 }
 
 .nav-image {
@@ -178,12 +184,12 @@ select,
 /* About Section Styling */
 .about {
     margin-top: 0;
-    background-image: url("../images/aboutback.png");
+    background-image: url("../images/aboutback.png"); /* Sets background image to display under elements */
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position-x: center;
     background-position-y: center;
-    height: fit-content;
+    height: fit-content; /* sets size of section based on content */
     display: grid;
     grid-template-columns: 40vw 60vw;
     grid-template-rows: 30vh 70vh;
@@ -192,8 +198,8 @@ select,
 
 .about-title {
     grid-area: abouttitle;
-    align-self: flex-end;
-    justify-self: center;
+    align-self: flex-end; /* vertical aligns to end of section vertically */
+    justify-self: center; /* horizontal aligns to middle of section */
 }
 
 .title-cont {
@@ -235,28 +241,28 @@ select,
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    z-index: -1;
+    justify-content: space-between; /* adds even spacing between elements */
+    z-index: -1; /* Positions element under other elements on z-index */
 }
 
 #gallery-title {
     background-color: white;
     color: #dd7d30;
     border: 3px solid #dd7d30;
-    margin-bottom: -8vh;
-    position: relative;
+    margin-bottom: -8vh; /* Negative margin overlaps element into section below */
+    position: relative; /* Relative positioning places element to where it normally appears */
 }
 
 .image-container {
-    flex: calc(31% - 20px);
+    flex: calc(31% - 20px); /* Flex calc calculates the position of the element so it takes up 31% of the screen taking into account 20px margin */
     margin-bottom: 20px;
-    height: auto;
+    height: auto; /* Auto height based on the width of elements and is responsive */
 }
 
 .gallery-image {
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Cover ensures that the entire section is covered by image even when resized */
     padding: 10px 10px;
 }
 
@@ -275,19 +281,19 @@ select,
     border-radius: 10px;
     padding: 10px;
     font-size: 2em;
-    cursor: pointer;
+    cursor: pointer; /* Changes mouse on hover to indicate an action element */
 }
 
 #prevPage {
-    order: 1;
+    order: 1; /* Ensures this sits in first position */ 
     display: none;
 }
 
 #nextPage {
-    order: 2;
+    order: 2; /* Ensures this sits in section position or to the right of elements */
 }
 
-/* Booking Section Styling */
+/* Activities Section Styling */
 .activities-section {
     background-image: url("../images/activitiesback.png");
     background-repeat: no-repeat;
@@ -309,8 +315,8 @@ select,
 }
 
 .activity-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Adds shadowing around element to emphasize enclosure of elements */
+    transition: 0.3s; /* Time it takes to transition between changes to elements */
     border-radius: 10px;
     background-color: white;
     height: 100%;
@@ -319,7 +325,7 @@ select,
 }
 
 .activity-card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Animation on hover through shadowing */
 }
 
 .activity-img {
@@ -333,6 +339,7 @@ select,
     padding: 5px 20px;
 }
 
+/* Styling for Contact Section */
 .contact-section {
     background-color: #76689a;
     padding: 5vh 10vw;
@@ -346,8 +353,8 @@ select,
 
 .contact-form {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px;
+    grid-template-columns: 1fr; /* Refers to how many units each column takes up 1 = whole unit */
+    grid-gap: 10px; /* Spacing between elements */
 }
 
 .form-section {
@@ -371,7 +378,7 @@ select,
 /* Media Queries for Tablet */
 @media only screen and (max-width: 1024px) {
     .page-header {
-        grid-template-areas: 'title title' 'booking hero';
+        grid-template-areas: 'title title' 'booking hero'; /* Changes to layout based on areas */
         grid-template-columns: 55vw 45vw;
         grid-template-rows: 30vh;
     }
@@ -387,6 +394,7 @@ select,
 
 /* Media Queries for Mobile */
 @media only screen and (max-width: 530px) {
+    /* Change in font sizing for better visibility on smaller screens */
     h1 {
         font-size: 24px;
     }
@@ -421,6 +429,7 @@ select,
         flex: 100%;
     }
 
+    /* Change in height to more responsive sizing */
     .navbar {
         height: 10vh;
         width: 100%;
@@ -456,7 +465,7 @@ select,
     }
 
     .about {
-        background-image: url("../images/aboutback2.png");
+        background-image: url("../images/aboutback2.png"); /* Change to background image more suitable to mobile layout */
         grid-template-columns: 25vw;
         grid-template-rows: 20vh 30vh 50vh;
         width: 100%;
@@ -465,7 +474,7 @@ select,
     }
 
     .about-title {
-        grid-column: 1 /span 3;
+        grid-column: 1 /span 3; /* Instead of relying on grid-template-areas this has changed to refer to column 1 spanning 3 columns */
         grid-row: 1;
     }
 
@@ -497,14 +506,15 @@ select,
 
     .activities-container {
         display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
+        overflow-x: auto; /* Displays one element on screen with overflow scrolled to */
+        scroll-snap-type: x mandatory; /* Snaps scrolling to each element so it doesn't sit halfway between elements */
         width: 80%;
         margin: auto;
         scrollbar-color: #76689a #ccc;
         scrollbar-width: thin;
     }
 
+    /* Styling for scroll bar to allow for prominence and usability */
     .activities-container::-webkit-scrollbar {
         width: 12px;
     }
@@ -522,6 +532,6 @@ select,
     .activity-card {
         flex: 0 0 100%;
         margin: 2%;
-        scroll-snap-align: start;
+        scroll-snap-align: start; /* Aligns to the start of scroll snap point */
     }
 }

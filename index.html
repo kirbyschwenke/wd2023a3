@@ -9,6 +9,7 @@
 -->
 
 <head>
+    <!-- Head elements to set up page including importing external stylesheet, google fonts and setting the viewport scale -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lilac Valley Farm Stay</title>
@@ -18,16 +19,22 @@
 </head>
 
 <body>
-    <header class="page-header">
+    <!-- Landing Section of Website in Header element -->
+    <header class="page-header" id="page-header">
+        <!-- Sections split up into different div's to allow for styling and grid layout -->
         <div class="title">
+            <!-- All images have alt text for accessibility and SEO -->
             <img class="logo" src="images/logo.png" alt="Lilac Valley Logo" />
             <div class="page-title">
                 <h1>LILAC VALLEY</h1>
+                <!-- Inline styling to style only this h2 -->
                 <h2 style="color:black;">FARM STAY</h2>
             </div>
         </div>
+        <!-- Form to collect user input for booking and search - full functionality would require database connection and further coding in other languages -->
         <form class="booking-form">
             <div class="form-elements">
+                <!-- Labels implemented for each section and types assign to each section to allow for data validity -->
                 <label for="checkin">Check In</label>
                 <input class="booking-items" type="date" id="checkin" name="checkin">
             </div>
@@ -38,6 +45,7 @@
 
             <div class="form-elements">
                 <label for="adults">Adults</label>
+                <!-- Select class allows for dropdown box options with single select -->
                 <select class="booking-items" id="adults" name="adults">
                     <option value="1">1 adult</option>
                     <option value="2">2 adults</option>
@@ -66,9 +74,13 @@
 
     </header>
 
+    <!-- Navbar element-->
     <div class="navbar fixed">
+        <!-- Logo with navigation back to header section - UX design practice -->
         <a href="#header"><img alt="Lilac Valley Logo" class="nav-image" src="images/logo.png" /></a>
+        <!-- Hamburger menu icon for display on smaller screens -->
         <div id="menu-toggle" class="hamburger">☰</div>
+        <!-- Links to each div on the page accessed through their id -->
         <div id="menu-items" class="nav-items">
             <a href="#about" class="nav-item">About</a>
             <a href="#gallery" class="nav-item">Gallery</a>
@@ -77,7 +89,9 @@
         </div>
     </div>
 
+    <!-- About section of page in div element -->
     <div class="about" id="about">
+        <!-- Each section encased by div to allow them to be referenced when setting up grid layout -->
         <div class="about-title">
             <h2 class="title-cont">About Us</h2>
         </div>
@@ -89,9 +103,13 @@
         </div>
         <img class="about-image" alt="orange chair with decor" src="images/about.png" />
     </div>
+
+    <!-- Gallery section of page in div element-->
     <div class="gallery" id="gallery">
         <h2 class="title-cont" id="gallery-title">Gallery</h2>
+        <!-- Gallery container to set up flex layout for responsiveness -->
         <div class="gallery-container" id="galleryContainer">
+            <!-- Each image is encased by an image-container to allow for consistent styling -->
             <div class="image-container">
                 <img class="gallery-image" src="images/gallery1.png" alt="Outdoor Gazebo in House Garden">
             </div>
@@ -131,14 +149,20 @@
                 <img class="gallery-image" src="images/gallery12.png" alt="Five organic eggs on tea towel">
             </div>
         </div>
+        <!-- Div to house previous and next arrows and trigger JS event -->
         <div class="pagination">
             <button id="prevPage" onclick="changePage(-1)"> &lt; </button>
             <button id="nextPage" onclick="changePage(1)"> &gt; </button>
         </div>
     </div>
+
+    <!-- Activities section encased in div-->
     <div class="activities-section" id="activities">
+        <!-- h2 class for reference in external css -->
         <h2 class="title-cont" id="activities-title">Activities</h2>
+        <!-- Container to allow for flex layout-->
         <div class="activities-container">
+            <!-- Each activity is housed in a card for consistent layout and to allow for flex layout -->
             <div class="activity-card">
                 <img class="activity-img" src="images/pool.png" alt="Pool on varandah with sunset in background">
                 <div class="activity-text">
@@ -162,10 +186,15 @@
             </div>
         </div>
     </div>
+
+    <!-- Contact section of page -->
     <div class="contact-section" id="contact">
+        <!-- Contact form in container to allow for grid layout -->
         <div class="contact-form-container">
             <h2>Get in touch!</h2>
+            <!-- Form class to collect input - full functionality would require connection to a database and further coding in another language -->
             <form class="contact-form">
+                <!-- Each div has form-section class for consistent styling -->
                 <div class="form-section">
                     <label class="contact-label" for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -182,6 +211,7 @@
             </form>
         </div>
     </div>
+    <!-- Script to support responsiveness and functions such as the navbar and add event listeners for arrow button clicks-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var navbar = document.querySelector(".navbar");
